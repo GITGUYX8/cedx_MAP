@@ -1,0 +1,9 @@
+{
+  "id": ["id", "identifier", "record id", "record_id", "request id"],
+  "owner": ["owner", "assigned to", "assigned_to", "owner_email", "requester"],
+  "deadline": ["deadline", "due date", "due_date", "due", "target date"],
+  "amount": ["amount", "value", "sum", "total", "price", "cost", "figure"],
+  "category": ["category", "type", "kind", "request type", "request_type"],
+  "version": ["version", "v", "revision"],
+  "notes": ["notes", "note", "comments", "comment", "description", "details"]
+}
