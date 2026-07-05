@@ -37,7 +37,7 @@ def main() -> int:
 
     env = {
         **os.environ,
-        "SEED_DIR": os.environ.get("SEED_DIR", "../seed"),
+        "SEED_DIR": os.environ.get("SEED_DIR", "seed"),
         "PYTHONPATH": "src:lib",
         "REPLAY_LLM": "true",
     }
@@ -107,8 +107,8 @@ def main() -> int:
 
     # Check audit passes verify_audit
     verify = subprocess.run(
-        [sys.executable, "../verify_audit.py", "--audit", "out/audit.json",
-         "--transcripts", "transcripts", "--schema", "../audit.schema.json"],
+        [sys.executable, "verify_audit.py", "--audit", "out/audit.json",
+         "--transcripts", "transcripts", "--schema", "audit.schema.json"],
         cwd=run_dir,
         capture_output=True,
         text=True,

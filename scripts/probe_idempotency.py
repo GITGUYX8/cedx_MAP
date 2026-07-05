@@ -17,7 +17,7 @@ from pathlib import Path
 
 def main() -> int:
     run_dir = Path.cwd()
-    seed_dir = os.environ.get("SEED_DIR", "../seed")
+    seed_dir = os.environ.get("SEED_DIR", "seed")
     store_path = Path("out/records.db")
     audit_path = Path("out/audit.json")
     eq_path = Path("out/exception_queue.json")
@@ -30,7 +30,7 @@ def main() -> int:
     if eq_path.exists():
         eq_path.unlink()
 
-    env = {**os.environ, "SEED_DIR": os.environ.get("SEED_DIR", "../seed"), "STORE_PATH": str(store_path), "PYTHONPATH": "src:lib", "REPLAY_LLM": "true"}
+    env = {**os.environ, "SEED_DIR": os.environ.get("SEED_DIR", "seed"), "STORE_PATH": str(store_path), "PYTHONPATH": "src:lib", "REPLAY_LLM": "true"}
     result1 = subprocess.run(
         [sys.executable, "scripts/run_pipeline.py"],
         cwd=run_dir,

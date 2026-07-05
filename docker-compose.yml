@@ -1,0 +1,12 @@
+version: "3.9"
+
+services:
+  cedx-pipeline:
+    build: .
+    command: make demo SEED_DIR=seed
+    volumes:
+      - ./out:/app/out
+      - ./transcripts:/app/transcripts
+    environment:
+      - REPLAY_LLM=true
+      - CASE_ID=CEDX-0000
