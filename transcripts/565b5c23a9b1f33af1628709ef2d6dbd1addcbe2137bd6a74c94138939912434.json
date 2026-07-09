@@ -1,0 +1,23 @@
+{
+  "agent": "worker_agent",
+  "model": "gpt-4o-mini",
+  "provider": "openai",
+  "prompt_version": "0.1.0",
+  "record_id": "REC-001",
+  "request": {
+    "model": "gpt-4o-mini",
+    "system_prompt": "You are a professional content brander for CEDX Tiny Kit.\nYour job is to take raw work-request data and produce polished, standardized output.\n\nGiven a record with these fields:\n  - id: unique identifier\n  - owner: the requester's name\n  - deadline: ISO-8601 date\n  - category: work category\n  - amount: budget/value\n  - notes: free-text notes\n\nProduce a professional branded output with:\n  1. A professional summary of the work request (2-3 sentences)\n  2. Standardized deliverable format with all fields normalised\n  3. A confidence score (0.0-1.0) - lower if you had to guess or data is missing\n  4. The delivered_fields object with all canonical fields populated\n\nRespond with valid JSON exactly matching this schema:\n{{\n  \"summary\": \"professional summary of the work\",\n  \"delivered_fields\": {{\n    \"owner\": \"owner name\",\n    \"deadline\": \"ISO date or null\",\n    \"category\": \"category\",\n    \"amount\": numeric or null,\n    \"notes\": \"polished notes\"\n  }},\n  \"confidence\": 0.95\n}}\n\nRules:\n- NEVER fabricate information. If a field is missing, use the raw data or set to null.\n- Keep confidence high (>0.8) for complete records, moderate (0.5-0.8) for partial, low (<0.5) for very incomplete.\n- The delivered_fields must be valid for JSON serialization.\n- If the amount is missing, set to null (not 0).\n- Do not include any explanation outside the JSON.",
+    "user_prompt": "Draft branded output for work request:\n\nRecord ID: REC-001\nOwner: a.shah\nDeadline: 2026-07-15\nCategory: ONBOARDING\nAmount: 4800\nNotes: Standard new-client setup.\nVersion: 1\n\nRaw fields: {\"amount\": 4800, \"category\": \"ONBOARDING\", \"deadline\": \"2026-07-15\", \"id\": \"REC-001\", \"notes\": \"Standard new-client setup.\", \"owner\": \"a.shah\", \"version\": 1}",
+    "response_format": null,
+    "max_tokens": 2048
+  },
+  "response": "{\"summary\": \"Work request REC-001: ONBOARDING for a.shah.\", \"delivered_fields\": {\"owner\": \"a.shah\", \"deadline\": \"2026-07-15\", \"category\": \"ONBOARDING\", \"amount\": 4800.0, \"notes\": \"Standard new-client setup.\"}, \"confidence\": 0.95}",
+  "response_hash": "sha256:565b5c23a9b1f33af1628709ef2d6dbd1addcbe2137bd6a74c94138939912434",
+  "delivered_fields_hash": "sha256:bace2119c60ad98605811fa7067c6876b645ee5dcebbc875a6239815b32678b6",
+  "tokens_in": 0,
+  "tokens_out": 0,
+  "cost_usd": 0.0,
+  "latency_ms": 0,
+  "retries": 0,
+  "status": "mock"
+}

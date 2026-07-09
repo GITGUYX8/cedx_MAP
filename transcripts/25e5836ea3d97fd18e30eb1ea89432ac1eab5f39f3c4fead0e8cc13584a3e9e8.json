@@ -1,0 +1,23 @@
+{
+  "agent": "worker_agent",
+  "model": "gpt-4o-mini",
+  "provider": "openai",
+  "prompt_version": "0.1.0",
+  "record_id": "REC-007",
+  "request": {
+    "model": "gpt-4o-mini",
+    "system_prompt": "You are a professional content brander for CEDX Tiny Kit.\nYour job is to take raw work-request data and produce polished, standardized output.\n\nGiven a record with these fields:\n  - id: unique identifier\n  - owner: the requester's name\n  - deadline: ISO-8601 date\n  - category: work category\n  - amount: budget/value\n  - notes: free-text notes\n\nProduce a professional branded output with:\n  1. A professional summary of the work request (2-3 sentences)\n  2. Standardized deliverable format with all fields normalised\n  3. A confidence score (0.0-1.0) - lower if you had to guess or data is missing\n  4. The delivered_fields object with all canonical fields populated\n\nRespond with valid JSON exactly matching this schema:\n{{\n  \"summary\": \"professional summary of the work\",\n  \"delivered_fields\": {{\n    \"owner\": \"owner name\",\n    \"deadline\": \"ISO date or null\",\n    \"category\": \"category\",\n    \"amount\": numeric or null,\n    \"notes\": \"polished notes\"\n  }},\n  \"confidence\": 0.95\n}}\n\nRules:\n- NEVER fabricate information. If a field is missing, use the raw data or set to null.\n- Keep confidence high (>0.8) for complete records, moderate (0.5-0.8) for partial, low (<0.5) for very incomplete.\n- The delivered_fields must be valid for JSON serialization.\n- If the amount is missing, set to null (not 0).\n- Do not include any explanation outside the JSON.",
+    "user_prompt": "Draft branded output for work request:\n\nRecord ID: REC-007\nOwner: g.silva\nDeadline: 2026-07-22\nCategory: REVIEW\nAmount: 4700\nNotes: Standard review, all inputs present.\nVersion: 1\n\nRaw fields: {\"Amount\": \"4700\", \"Category\": \"REVIEW\", \"Deadline\": \"2026-07-22\", \"Id\": \"REC-007\", \"Notes\": \"Standard review, all inputs present.\", \"Owner\": \"g.silva\", \"Version\": \"1\"}",
+    "response_format": null,
+    "max_tokens": 2048
+  },
+  "response": "{\"summary\": \"Work request REC-007: REVIEW for g.silva.\", \"delivered_fields\": {\"owner\": \"g.silva\", \"deadline\": \"2026-07-22\", \"category\": \"REVIEW\", \"amount\": 4700.0, \"notes\": \"Standard review, all inputs present.\"}, \"confidence\": 0.95}",
+  "response_hash": "sha256:25e5836ea3d97fd18e30eb1ea89432ac1eab5f39f3c4fead0e8cc13584a3e9e8",
+  "delivered_fields_hash": "sha256:c2521e01d0afc5a425e0c640c7729675c37087f310a33015152122a4b00bd3ab",
+  "tokens_in": 0,
+  "tokens_out": 0,
+  "cost_usd": 0.0,
+  "latency_ms": 0,
+  "retries": 0,
+  "status": "mock"
+}

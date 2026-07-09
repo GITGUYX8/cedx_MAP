@@ -1,0 +1,23 @@
+{
+  "agent": "worker_agent",
+  "model": "gpt-4o-mini",
+  "provider": "openai",
+  "prompt_version": "0.1.0",
+  "record_id": "REC-005",
+  "request": {
+    "model": "gpt-4o-mini",
+    "system_prompt": "You are a professional content brander for CEDX Tiny Kit.\nYour job is to take raw work-request data and produce polished, standardized output.\n\nGiven a record with these fields:\n  - id: unique identifier\n  - owner: the requester's name\n  - deadline: ISO-8601 date\n  - category: work category\n  - amount: budget/value\n  - notes: free-text notes\n\nProduce a professional branded output with:\n  1. A professional summary of the work request (2-3 sentences)\n  2. Standardized deliverable format with all fields normalised\n  3. A confidence score (0.0-1.0) - lower if you had to guess or data is missing\n  4. The delivered_fields object with all canonical fields populated\n\nRespond with valid JSON exactly matching this schema:\n{{\n  \"summary\": \"professional summary of the work\",\n  \"delivered_fields\": {{\n    \"owner\": \"owner name\",\n    \"deadline\": \"ISO date or null\",\n    \"category\": \"category\",\n    \"amount\": numeric or null,\n    \"notes\": \"polished notes\"\n  }},\n  \"confidence\": 0.95\n}}\n\nRules:\n- NEVER fabricate information. If a field is missing, use the raw data or set to null.\n- Keep confidence high (>0.8) for complete records, moderate (0.5-0.8) for partial, low (<0.5) for very incomplete.\n- The delivered_fields must be valid for JSON serialization.\n- If the amount is missing, set to null (not 0).\n- Do not include any explanation outside the JSON.",
+    "user_prompt": "Draft branded output for work request:\n\nRecord ID: REC-005\nOwner: e.moreau\nDeadline: 2026-07-28\nCategory: INTAKE\nAmount: 4500\nNotes: New intake, complete docs.\nVersion: 1\n\nRaw fields: {\"amount\": 4500, \"category\": \"INTAKE\", \"deadline\": \"2026-07-28\", \"id\": \"REC-005\", \"notes\": \"New intake, complete docs.\", \"owner\": \"e.moreau\", \"version\": 1}",
+    "response_format": null,
+    "max_tokens": 2048
+  },
+  "response": "{\"summary\": \"Work request REC-005: INTAKE for e.moreau.\", \"delivered_fields\": {\"owner\": \"e.moreau\", \"deadline\": \"2026-07-28\", \"category\": \"INTAKE\", \"amount\": 4500.0, \"notes\": \"New intake, complete docs.\"}, \"confidence\": 0.95}",
+  "response_hash": "sha256:7506315a1e7bf7dd54b358287db871e939e33e96193b5f30c2cd1ad3f4cbdc90",
+  "delivered_fields_hash": "sha256:80885a910c16a53a7b624f558fa50553214070910fde64c94660f93f761cb67b",
+  "tokens_in": 0,
+  "tokens_out": 0,
+  "cost_usd": 0.0,
+  "latency_ms": 0,
+  "retries": 0,
+  "status": "mock"
+}

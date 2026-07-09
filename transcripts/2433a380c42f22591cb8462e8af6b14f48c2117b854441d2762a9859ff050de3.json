@@ -1,0 +1,23 @@
+{
+  "agent": "verifier_agent",
+  "model": "llama-3.1-8b-instant",
+  "provider": "groq",
+  "prompt_version": "0.1.0",
+  "record_id": "REC-006",
+  "request": {
+    "model": "llama-3.1-8b-instant",
+    "system_prompt": "(injected agent-failure transcript)",
+    "user_prompt": "Record REC-006 (agent-failure probe)",
+    "max_tokens": 1024,
+    "temperature": 0.0
+  },
+  "response": "{\n  \"verdict\": \"fail\",\n  \"issues\": [\n    {\n      \"type\": \"AGENT_HALLUCINATION\",\n      \"field\": \"priority\",\n      \"detail\": \"Worker added 'priority' field not present in source record data\"\n    },\n    {\n      \"type\": \"AGENT_HALLUCINATION\",\n      \"field\": \"assigned_team\",\n      \"detail\": \"Worker added 'assigned_team' field not present in source record data\"\n    }\n  ],\n  \"confidence\": 0.95\n}",
+  "response_hash": "sha256:2433a380c42f22591cb8462e8af6b14f48c2117b854441d2762a9859ff050de3",
+  "delivered_fields_hash": null,
+  "tokens_in": 0,
+  "tokens_out": 0,
+  "cost_usd": 0.0,
+  "latency_ms": 0,
+  "retries": 0,
+  "status": "mock"
+}

@@ -1,0 +1,23 @@
+{
+  "agent": "worker_agent",
+  "model": "llama-3.1-8b-instant",
+  "provider": "groq",
+  "prompt_version": "0.1.0",
+  "record_id": "REC-006",
+  "request": {
+    "model": "llama-3.1-8b-instant",
+    "system_prompt": "(injected agent-failure transcript)",
+    "user_prompt": "Record REC-006 (agent-failure probe)",
+    "max_tokens": 1024,
+    "temperature": 0.0
+  },
+  "response": "{\n  \"summary\": \"Renewal request REC-006: RENEWAL for f.haddad.\",\n  \"delivered_fields\": {\n    \"owner\": \"f.haddad\",\n    \"deadline\": \"2026-07-18\",\n    \"category\": \"RENEWAL\",\n    \"amount\": 5300,\n    \"notes\": \"Renewal with minor scope bump.\",\n    \"priority\": \"HIGH\",\n    \"assigned_team\": \"Renewals\"\n  },\n  \"confidence\": 0.95\n}",
+  "response_hash": "sha256:7ab6885bd1e3aa3169e373e79c5ef9662c71570bcaf74383239e9c425ace1c99",
+  "delivered_fields_hash": "sha256:8c4129868b685044f8392dcdd5011a676cd5ed5917a737b2855d4da9b336524a",
+  "tokens_in": 0,
+  "tokens_out": 0,
+  "cost_usd": 0.0,
+  "latency_ms": 0,
+  "retries": 0,
+  "status": "mock"
+}
